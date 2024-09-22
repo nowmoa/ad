@@ -460,7 +460,7 @@ form input[type="submit"] {
     margin-left: calc(50% - 50vw); /* 화면 가로 전체로 배경 확장 */
 }
 
-/.footer p {
+.footer p {
     margin: 0;
     line-height: 1.5em;
 }
