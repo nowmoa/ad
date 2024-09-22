@@ -7,6 +7,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #ffffff;
+    overflow-x: hidden; /* 가로 스크롤 문제 방지 */
 }
 
 /* 컨테이너 설정 */
@@ -409,8 +410,9 @@ form input[type="submit"] {
     text-align: center;
     padding: 50px 20px;
     background-color: #f0f4ff; /* 배경색을 밝은 파란색으로 설정 */
-    width: 100vw;
-    margin-left: calc(50% - 50vw); /* 배경을 화면 전체 가로로 */
+    width: 100vw; /* 화면 가로 전체를 차지 */
+    margin-left: calc(50% - 50vw); /* 화면 가로 전체로 배경 확장 */
+    box-sizing: border-box;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px -4px 8px rgba(0, 0, 0, 0.1); /* 위, 아래 그림자 추가 */
 }
 
@@ -454,11 +456,11 @@ form input[type="submit"] {
     background-color: #f4f4f4;
     font-size: 0.9em;
     color: #666;
-    width: 100vw; /* 푸터를 가로로 화면 가득 채우기 */
-    margin-left: calc(50% - 50vw); /* 푸터 배경 가득 차도록 */
+    width: 100vw; /* 화면 가로 전체를 차지 */
+    margin-left: calc(50% - 50vw); /* 화면 가로 전체로 배경 확장 */
 }
 
-.footer p {
+/.footer p {
     margin: 0;
     line-height: 1.5em;
 }
