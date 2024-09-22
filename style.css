@@ -452,7 +452,7 @@ form input[type="submit"] {
 /* 푸터 */
 .footer {
     text-align: center;
-    padding: 20px;
+    padding: 0px;
     background-color: #f4f4f4;
     font-size: 0.9em;
     color: #666;
