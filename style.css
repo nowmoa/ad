@@ -1,0 +1,549 @@
+/* Google Fonts를 사용하여 Noto Sans 폰트 적용 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap');
+
+/* 전체 배경 설정 */
+body {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+/* 컨테이너 설정 */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 헤더 섹션 */
+.header {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.header img {
+    width: 200px;
+    height: auto;
+}
+
+/* 인트로 섹션 스타일 */
+.intro {
+    width: 100vw;
+    padding: 50px 0;
+    background-color: #f4f4f4;
+    text-align: center;
+    box-sizing: border-box;
+    margin-left: calc(50% - 50vw);
+}
+
+.intro p {
+    margin: 12px 0;
+    font-size: 1em;
+    line-height: 1.8em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 강조 텍스트 스타일 */
+.intro p strong {
+    font-size: 1.4em;
+    line-height: 2.0em;
+    color: #333;
+}
+
+.highlight {
+    font-weight: 600;
+    font-size: 1.6em;
+    line-height: 2.2em;
+    color: #000;
+}
+
+.highlight-green {
+    font-weight: 600;
+    font-size: 1.6em;
+    line-height: 2.2em;
+    color: #32CD32;
+    position: relative;
+}
+
+.highlight-green::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #32CD32;
+    z-index: -1;
+}
+
+/* 빨간색 텍스트 */
+.red-text {
+    color: red;
+    font-size: 1.5em;
+    line-height: 2.0em;
+    margin: 15px 0;
+}
+
+/* 서비스 설명, 광고 마케팅, 클라이언트 섹션 */
+.service-description, .ad-marketing, .clients, .contact {
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* 폼 스타일 */
+form {
+    margin: 20px auto;
+    text-align: left;
+    max-width: 400px;
+}
+
+form input[type="text"], form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+}
+
+form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* 그리드 설정 */
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    max-width: 100%;
+}
+
+/* 한 줄에 8개씩 배치되도록 설정 */
+.grid-item {
+    flex-basis: calc(12.5% - 10px);
+    max-width: calc(12.5% - 10px);
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+/* 이미지 스타일 */
+.grid-item img {
+    width: 100%;
+    height: auto;
+    max-width: 150px;
+    display: block;
+    margin: 0 auto 10px;
+    object-fit: contain;
+}
+
+/* 첫 번째 텍스트 스타일 */
+.grid-item p:first-of-type {
+    font-size: 0.85em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2em;
+    white-space: normal;
+    overflow: visible;
+    color: #000000;
+}
+
+/* 두 번째 텍스트 스타일 */
+.grid-item p:nth-of-type(2) {
+    font-size: 0.75em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.2em;
+    white-space: normal;
+    overflow: visible;
+    color: #6b6b6b;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 1200px) {
+    .grid-item {
+        flex-basis: calc(12.5% - 10px);
+    }
+    
+    .grid-item img {
+        width: 100%;
+    }
+    
+    .grid-item p:first-of-type {
+        font-size: 0.75em;
+    }
+
+    .grid-item p:nth-of-type(2) {
+        font-size: 0.7em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        padding-left: 5px;
+        padding-right: 15px;
+    }
+    
+    .grid-item {
+        flex-basis: calc(25% - 10px);
+        max-width: calc(25% - 10px);
+    }
+    
+    .grid-item img {
+        width: 100%;
+    }
+    
+    .grid-item p:first-of-type {
+        font-size: 0.7em;
+    }
+
+    .grid-item p:nth-of-type(2) {
+        font-size: 0.65em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .grid-item {
+        flex-basis: calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+    
+    .grid-item img {
+        width: 100%;
+    }
+    
+    .grid-item p:first-of-type {
+        font-size: 0.65em;
+    }
+
+    .grid-item p:nth-of-type(2) {
+        font-size: 0.6em;
+    }
+}
+
+/* Slider Section */
+.slider-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 50px 0;
+}
+
+.slider {
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 슬라이더 아이템의 텍스트 스타일 수정 */
+.slider-item p:first-of-type {
+    font-size: 0.85em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2em;
+    color: #000000;
+}
+
+.slider-item p:nth-of-type(2) {
+    font-size: 0.75em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.2em;
+    color: #6b6b6b;
+}
+
+.slider-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+/* 슬라이더 트랙에 gap 추가 */
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 10px; /* 아이템 사이의 간격을 10px로 설정 */
+}
+
+/* 슬라이더 아이템 스타일 수정 */
+.slider-item {
+    flex: 0 0 calc(25% - 10px); /* gap을 고려하여 너비 계산 */
+    box-sizing: border-box;
+    padding: 0 0 10px 0;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+}
+
+/* 이미지 컨테이너 높이 줄이기 */
+.slider-item .img-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* 이미지 스타일 수정 */
+.slider-item .img-container img {
+    width: 100%;
+    height: 145px; /* 높이를 자동으로 조정 */
+    object-fit: contain; /* 이미지가 잘리지 않고 전체가 보이도록 */
+    display: block;
+    margin: 0;
+}
+
+/* 텍스트 스타일 */
+.slider-item p:first-of-type {
+    font-size: 0.85em;
+    font-weight: bold;
+    margin: 5px 0 0 0; /* 위쪽 마진 조정 */
+    line-height: 1.2em;
+    color: #000000;
+}
+
+.slider-item p:nth-of-type(2) {
+    font-size: 0.75em;
+    font-weight: normal;
+    margin: 2px 0 0 0; /* 위쪽 마진 조정 */
+    line-height: 1.2em;
+    color: #6b6b6b;
+}
+
+/* 화살표 버튼 스타일 수정 */
+.slider-prev, .slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.slider-prev {
+    left: 10px;
+}
+
+.slider-next {
+    right: 10px;
+}
+
+.slider-prev:hover, .slider-next:hover {
+    color: #555;
+}
+
+/* Slider Indicators */
+.slider-indicators {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.slider-indicators button {
+    background: #ccc;
+    border: none;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.slider-indicators button.active {
+    background: #333;
+}
+
+.clients {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.clients p {
+    font-size: 1.2em;
+    color: #6b6b6b;
+}
+
+.clients h2 {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.client-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.client-grid img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.client-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* 광고주이신가요 섹션 */
+.contact {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f0f4ff; /* 배경색을 밝은 파란색으로 설정 */
+    width: 100vw;
+    margin-left: calc(50% - 50vw); /* 배경을 화면 전체 가로로 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px -4px 8px rgba(0, 0, 0, 0.1); /* 위, 아래 그림자 추가 */
+}
+
+.contact h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    line-height: 1.4em;
+}
+
+.contact .contact-top-text,
+.contact .contact-bottom-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.kakao-button {
+    background-color: #ffeb3b; /* 노란색 배경 */
+    border-radius: 50px; /* 둥근 모서리 */
+    padding: 10px 20px; /* 버튼 크기 조절 */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.kakao-button a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.kakao-button:hover {
+    transform: scale(1.05);
+}
+
+/* 푸터 */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    font-size: 0.9em;
+    color: #666;
+    width: 100vw; /* 푸터를 가로로 화면 가득 채우기 */
+    margin-left: calc(50% - 50vw); /* 푸터 배경 가득 차도록 */
+}
+
+.footer p {
+    margin: 0;
+    line-height: 1.5em;
+}
+
+/* 반응형 디자인 - 작은 화면에서 줄바꿈 유지 */
+@media (max-width: 768px) {
+    .contact {
+        text-align: center;
+    }
+    
+    .kakao-button {
+        margin-top: 20px;
+    }
+}
+
+/* 플로팅 이미지 스타일 */
+.floating-button {
+    position: fixed;
+    bottom: 20px; /* 화면 하단에서 20px 위에 위치 */
+    right: 20px; /* 화면 오른쪽에서 20px 왼쪽에 위치 */
+    z-index: 9999; /* 다른 요소 위에 떠 있게 하기 위한 z-index */
+}
+
+.floating-button img {
+    width: 100%; /* 이미지 크기 설정 */
+    height: auto;
+    transition: transform 0.3s ease; /* 호버 시 애니메이션 효과 */
+}
+
+.floating-button img:hover {
+    transform: scale(1.1); /* 호버 시 약간 확대되는 효과 */
+}
+
+/* 스크롤 애니메이션 효과 */
+.scroll-effect {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-effect.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 반응형 슬라이더 */
+@media screen and (max-width: 1200px) {
+    .slider-item {
+        flex: 0 0 33.3333%; /* 한 줄에 3개씩 보이도록 */
+    }
+
+    .slider-item p:first-of-type {
+        font-size: 0.75em;
+    }
+
+    .slider-item p:nth-of-type(2) {
+        font-size: 0.7em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .slider-item {
+        flex: 0 0 50%; /* 한 줄에 2개씩 보이도록 */
+    }
+
+    .slider-item p:first-of-type {
+        font-size: 0.7em;
+    }
+
+    .slider-item p:nth-of-type(2) {
+        font-size: 0.65em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .slider {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .slider-item p:first-of-type {
+        font-size: 0.65em;
+    }
+
+    .slider-item p:nth-of-type(2) {
+        font-size: 0.6em;
+    }
+}
