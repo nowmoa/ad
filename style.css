@@ -169,68 +169,6 @@ form input[type="submit"] {
     color: #6b6b6b;
 }
 
-/* 반응형 디자인 */
-@media screen and (max-width: 1200px) {
-    .grid-item {
-        flex-basis: calc(12.5% - 10px);
-    }
-    
-    .grid-item img {
-        width: 100%;
-    }
-    
-    .grid-item p:first-of-type {
-        font-size: 0.75em;
-    }
-
-    .grid-item p:nth-of-type(2) {
-        font-size: 0.7em;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    .container {
-        padding-left: 5px;
-        padding-right: 15px;
-    }
-    
-    .grid-item {
-        flex-basis: calc(25% - 10px);
-        max-width: calc(25% - 10px);
-    }
-    
-    .grid-item img {
-        width: 100%;
-    }
-    
-    .grid-item p:first-of-type {
-        font-size: 0.7em;
-    }
-
-    .grid-item p:nth-of-type(2) {
-        font-size: 0.65em;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .grid-item {
-        flex-basis: calc(50% - 10px);
-        max-width: calc(50% - 10px);
-    }
-    
-    .grid-item img {
-        width: 100%;
-    }
-    
-    .grid-item p:first-of-type {
-        font-size: 0.65em;
-    }
-
-    .grid-item p:nth-of-type(2) {
-        font-size: 0.6em;
-    }
-}
-
 /* Slider Section */
 .slider-section {
     display: flex;
@@ -368,6 +306,7 @@ form input[type="submit"] {
     background: #333;
 }
 
+/* 클라이언트 섹션 */
 .clients {
     padding: 50px 0;
     text-align: center;
@@ -403,6 +342,23 @@ form input[type="submit"] {
 
 .client-grid img:hover {
     transform: scale(1.05);
+}
+
+/* 광고 마케팅 섹션 */
+.ad-marketing {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.ad-marketing h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.ad-marketing img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 /* 광고주이신가요 섹션 */
@@ -465,17 +421,6 @@ form input[type="submit"] {
     line-height: 1.5em;
 }
 
-/* 반응형 디자인 - 작은 화면에서 줄바꿈 유지 */
-@media (max-width: 768px) {
-    .contact {
-        text-align: center;
-    }
-    
-    .kakao-button {
-        margin-top: 20px;
-    }
-}
-
 /* 플로팅 이미지 스타일 */
 .floating-button {
     position: fixed;
@@ -506,12 +451,31 @@ form input[type="submit"] {
     transform: translateY(0);
 }
 
-/* 반응형 슬라이더 */
+/* 반응형 디자인 */
+
+/* 최대 너비 1200px 이하에서의 반응형 조정 */
 @media screen and (max-width: 1200px) {
-    .slider-item {
-        flex: 0 0 33.3333%; /* 한 줄에 3개씩 보이도록 */
+    /* 그리드 아이템 너비 조정 */
+    .grid-item {
+        flex-basis: calc(25% - 10px); /* 한 줄에 4개 */
+        max-width: calc(25% - 10px);
     }
 
+    /* 그리드 아이템 텍스트 크기 조정 */
+    .grid-item p:first-of-type {
+        font-size: 0.75em;
+    }
+
+    .grid-item p:nth-of-type(2) {
+        font-size: 0.7em;
+    }
+
+    /* 슬라이더 아이템 너비 조정 */
+    .slider-item {
+        flex: 0 0 33.3333%; /* 한 줄에 3개 */
+    }
+
+    /* 슬라이더 아이템 텍스트 크기 조정 */
     .slider-item p:first-of-type {
         font-size: 0.75em;
     }
@@ -521,11 +485,35 @@ form input[type="submit"] {
     }
 }
 
+/* 최대 너비 1000px 이하에서의 반응형 조정 */
 @media screen and (max-width: 1000px) {
-    .slider-item {
-        flex: 0 0 50%; /* 한 줄에 2개씩 보이도록 */
+    /* 컨테이너 패딩 조정 */
+    .container {
+        padding-left: 5px;
+        padding-right: 15px;
     }
 
+    /* 그리드 아이템 너비 조정 */
+    .grid-item {
+        flex-basis: calc(33.3333% - 10px); /* 한 줄에 3개 */
+        max-width: calc(33.3333% - 10px);
+    }
+
+    /* 그리드 아이템 텍스트 크기 조정 */
+    .grid-item p:first-of-type {
+        font-size: 0.7em;
+    }
+
+    .grid-item p:nth-of-type(2) {
+        font-size: 0.65em;
+    }
+
+    /* 슬라이더 아이템 너비 조정 */
+    .slider-item {
+        flex: 0 0 50%; /* 한 줄에 2개 */
+    }
+
+    /* 슬라이더 아이템 텍스트 크기 조정 */
     .slider-item p:first-of-type {
         font-size: 0.7em;
     }
@@ -535,17 +523,166 @@ form input[type="submit"] {
     }
 }
 
+/* 최대 너비 768px 이하에서의 반응형 조정 */
 @media screen and (max-width: 768px) {
-    .slider {
-        width: 100%;
-        margin-bottom: 30px;
+    /* 인트로 섹션 폰트 크기 조정 */
+    .intro p {
+        font-size: 0.9em; /* 기본 폰트 크기 줄이기 */
+        line-height: 1.6em;
     }
 
+    .intro p strong {
+        font-size: 1.2em;
+    }
+
+    .highlight {
+        font-size: 1.3em;
+    }
+
+    .highlight-green {
+        font-size: 1.3em;
+    }
+
+    .red-text {
+        font-size: 1.2em;
+    }
+
+    /* 헤더 섹션 폰트 크기 조정 */
+    .header img {
+        width: 150px; /* 로고 크기 줄이기 */
+    }
+
+    /* 슬라이더 섹션 폰트 크기 조정 */
+    .slider h2 {
+        font-size: 1.5em;
+    }
+
+    /* 클라이언트 섹션 폰트 크기 조정 */
+    .clients h2 {
+        font-size: 1.8em;
+    }
+
+    .clients p {
+        font-size: 1em;
+    }
+
+    /* 광고주 섹션 폰트 크기 조정 */
+    .contact h2 {
+        font-size: 1.8em;
+    }
+
+    .contact .contact-top-text,
+    .contact .contact-bottom-text {
+        font-size: 1em;
+    }
+
+    /* 푸터 섹션 폰트 크기 조정 */
+    .footer p {
+        font-size: 0.8em;
+    }
+
+    /* 슬라이더 아이템 너비 조정 */
+    .slider-item {
+        flex: 0 0 100%; /* 한 줄에 1개 */
+    }
+
+    /* 슬라이더 아이템 텍스트 크기 조정 */
     .slider-item p:first-of-type {
         font-size: 0.65em;
     }
 
     .slider-item p:nth-of-type(2) {
         font-size: 0.6em;
+    }
+
+    /* 슬라이더 컨테이너 전체 너비 조정 */
+    .slider {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    /* 추가: "궁금해요! 나우모아애드가 하는 일은?" 섹션 폰트 크기 조정 */
+    .section h2 {
+        font-size: 1.6em; /* 기존 2em에서 줄이기 */
+    }
+
+    /* 추가: "나우모아애드 광고주이신가요?" 섹션 폰트 크기 조정 */
+    .contact h2 {
+        font-size: 1.8em; /* 이미 조정됨 */
+    }
+}
+
+/* 최대 너비 480px 이하에서의 추가 반응형 조정 */
+@media screen and (max-width: 480px) {
+    /* 인트로 섹션 폰트 크기 추가 조정 */
+    .intro p {
+        font-size: 0.8em;
+        line-height: 1.4em;
+    }
+
+    .intro p strong {
+        font-size: 1.1em;
+    }
+
+    .highlight {
+        font-size: 1.2em;
+    }
+
+    .highlight-green {
+        font-size: 1.2em;
+    }
+
+    .red-text {
+        font-size: 1em;
+    }
+
+    /* 헤더 섹션 폰트 크기 추가 조정 */
+    .header img {
+        width: 120px;
+    }
+
+    /* 슬라이더 섹션 폰트 크기 추가 조정 */
+    .slider h2 {
+        font-size: 1.3em;
+    }
+
+    /* 클라이언트 섹션 폰트 크기 추가 조정 */
+    .clients h2 {
+        font-size: 1.6em;
+    }
+
+    .clients p {
+        font-size: 0.9em;
+    }
+
+    /* 광고주 섹션 폰트 크기 추가 조정 */
+    .contact h2 {
+        font-size: 1.4em;
+    }
+
+    .contact .contact-top-text,
+    .contact .contact-bottom-text {
+        font-size: 0.9em;
+    }
+
+    /* 푸터 섹션 폰트 크기 추가 조정 */
+    .footer p {
+        font-size: 0.7em;
+    }
+
+    /* 추가: "궁금해요! 나우모아애드가 하는 일은?" 섹션 폰트 크기 추가 조정 */
+    .section h2 {
+        font-size: 1.4em; /* 기존 1.6em에서 더 줄이기 */
+    }
+}
+
+/* 반응형 디자인 - 작은 화면에서 줄바꿈 유지 */
+@media (max-width: 768px) {
+    .contact {
+        text-align: center;
+    }
+
+    .kakao-button {
+        margin-top: 20px;
     }
 }
