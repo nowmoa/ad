@@ -2,6 +2,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const sliders = document.querySelectorAll('.slider');
     const scrollElements = document.querySelectorAll('.scroll-effect');
 
+    // 네비게이션 스크롤 이동 기능 추가
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80, // 헤더 높이만큼 빼고 스크롤
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
     // 반응형 슬라이드를 위한 함수
     function getItemsPerSlide() {
         if (window.innerWidth >= 1200) {
@@ -29,14 +47,14 @@ document.addEventListener('DOMContentLoaded', function () {
         function updateSlider() {
             itemsPerSlide = getItemsPerSlide();
             const slideWidth = slider.clientWidth / itemsPerSlide; // 슬라이더 너비 계산
-            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`; // 슬라이더 트랙 이동
             updateIndicators();
         }
 
         // 인디케이터 업데이트
         function updateIndicators() {
-            indicatorsContainer.innerHTML = '';
-            const totalSlides = Math.ceil(totalItems / itemsPerSlide);
+            indicatorsContainer.innerHTML = '';  // 인디케이터 초기화
+            const totalSlides = Math.ceil(totalItems / itemsPerSlide);  // 총 슬라이드 개수 계산
             for (let i = 0; i < totalSlides; i++) {
                 const indicator = document.createElement('button');
                 indicator.classList.add('indicator');
