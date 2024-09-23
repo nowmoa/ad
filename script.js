@@ -1,17 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const sliders = document.querySelectorAll('.slider');
     const scrollElements = document.querySelectorAll('.scroll-effect');
 
+    // 반응형 슬라이드를 위한 함수
     function getItemsPerSlide() {
         if (window.innerWidth >= 1200) {
-            return 4;
+            return 4; // 데스크탑에서 4개
         } else if (window.innerWidth >= 768) {
-            return 3;
+            return 3; // 태블릿에서 3개
         } else {
-            return 2;
+            return 2; // 모바일에서 2개씩 표시
         }
     }
 
+    // 슬라이더 초기화 함수
     function initializeSlider(slider) {
         const track = slider.querySelector('.slider-track');
         const items = slider.querySelectorAll('.slider-item');
@@ -19,70 +21,76 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextButton = slider.querySelector('.slider-next');
         const indicatorsContainer = slider.querySelector('.slider-indicators');
 
-        let itemsPerSlide = getItemsPerSlide();
+        let currentIndex = 0;
         const totalItems = items.length;
-        const totalSlides = Math.ceil(totalItems / itemsPerSlide);
-        let currentSlide = 0;
+        let itemsPerSlide = getItemsPerSlide();
 
-        while (indicatorsContainer.firstChild) {
-            indicatorsContainer.removeChild(indicatorsContainer.firstChild);
-        }
-
-        for (let i = 0; i < totalSlides; i++) {
-            const indicator = document.createElement('button');
-            if (i === 0) indicator.classList.add('active');
-            indicatorsContainer.appendChild(indicator);
-        }
-
-        const indicators = indicatorsContainer.querySelectorAll('button');
-
-        function updateSliderPosition() {
+        // 슬라이더 포지션 및 인디케이터 업데이트
+        function updateSlider() {
             itemsPerSlide = getItemsPerSlide();
-            const slideWidth = 100;
-            const newPosition = -(currentSlide * slideWidth) + '%';
-            track.style.transform = `translateX(${newPosition})`;
-
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
+            const slideWidth = slider.clientWidth / itemsPerSlide; // 슬라이더 너비 계산
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            updateIndicators();
         }
 
-        prevButton.addEventListener('click', function() {
-            currentSlide = (currentSlide > 0) ? currentSlide - 1 : totalSlides - 1;
-            updateSliderPosition();
-        });
+        // 인디케이터 업데이트
+        function updateIndicators() {
+            indicatorsContainer.innerHTML = '';
+            const totalSlides = Math.ceil(totalItems / itemsPerSlide);
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('button');
+                indicator.classList.add('indicator');
+                if (i === Math.floor(currentIndex / itemsPerSlide)) {
+                    indicator.classList.add('active');
+                }
+                indicator.addEventListener('click', () => {
+                    currentIndex = i * itemsPerSlide;
+                    updateSlider();
+                });
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
 
-        nextButton.addEventListener('click', function() {
-            currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : 0;
-            updateSliderPosition();
-        });
+        // 다음 슬라이드로 이동 (한 번에 itemsPerSlide 개수만큼 이동)
+        function nextSlide() {
+            if (currentIndex < totalItems - itemsPerSlide) {
+                currentIndex += itemsPerSlide; // itemsPerSlide 수만큼 넘김
+            } else {
+                currentIndex = 0; // 처음으로 돌아감
+            }
+            updateSlider();
+        }
 
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', function() {
-                currentSlide = index;
-                updateSliderPosition();
-            });
-        });
+        // 이전 슬라이드로 이동 (한 번에 itemsPerSlide 개수만큼 이동)
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex -= itemsPerSlide; // itemsPerSlide 수만큼 되돌림
+            } else {
+                currentIndex = totalItems - itemsPerSlide; // 마지막 슬라이드로 이동
+            }
+            updateSlider();
+        }
 
-        setInterval(function() {
-            currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : 0;
-            updateSliderPosition();
-        }, 3000);
+        // 이벤트 핸들러 추가
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
 
-        updateSliderPosition();
+        // 자동 슬라이드 (3초마다)
+        setInterval(nextSlide, 3000);
+
+        // 초기 슬라이더 설정
+        updateSlider();
+
+        // 창 크기 변경 시 슬라이더 업데이트
+        window.addEventListener('resize', updateSlider);
     }
 
-    sliders.forEach(function(slider) {
+    // 모든 슬라이더에 대해 초기화 실행
+    sliders.forEach(function (slider) {
         initializeSlider(slider);
     });
 
-    window.addEventListener('resize', function() {
-        sliders.forEach(function(slider) {
-            initializeSlider(slider);
-        });
-    });
-
-    // 스크롤 애니메이션
+    // 스크롤 애니메이션 처리 함수
     const elementInView = (el, dividend = 1.25) => {
         const elementTop = el.getBoundingClientRect().top;
         return elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend;
@@ -106,7 +114,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
+    // 스크롤 이벤트 리스너
     window.addEventListener('scroll', () => {
         handleScrollAnimation();
     });
+
+    // 초기 스크롤 애니메이션 트리거
+    handleScrollAnimation();
 });
